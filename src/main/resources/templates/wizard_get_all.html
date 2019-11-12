@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<link th:href="@{/style.css}" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Harry Potter</title>
+</head>
+<body>
+<div id="form_search_bar">
+	<form action="#" th:action="@{/wizards/search}" method="get" >
+		<input type="text" th:name="query" placeholder="Rechercher un sorcier"/><a href="/wizards">Reset</a>
+	</form>
+</div>
+
+<table>
+	<tr>
+		<th>PRENOM</th>
+		<th>NOM</th>
+		<th>DATE DE NAISSANCE</th>
+		<th>LIEU DE NAISSANCE</th>
+		<th>BIOGRAPHY</th>
+		<th>MOLDU ?</th>
+	</tr>
+	<tr th:each="wiz : ${wizards}">
+		<td th:text="${wiz.firstName}"></td>
+		<td th:text="${wiz.lastName}"></td>
+		<td th:text="${wiz.birthday}"></td>
+		<td th:text="${wiz.birthPlace}"></td>
+		<td th:text="${wiz.biography}"></td>
+		<td th:text="${wiz.muggle}? 'Muggle' : 'Wizard'"></td>
+	</tr>
+</table>
+
+  
+</body>
+</html>
